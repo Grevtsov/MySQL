@@ -1,0 +1,47 @@
+C:\Users\LENOVO>ssh pavel@192.168.235.170
+The authenticity of host '192.168.235.170 (192.168.235.170)' can't be established.
+ECDSA key fingerprint is SHA256:raYOQJYI/QBXVOlC6wzR3cDKDbldJs3/owAAY25bnbc.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? y
+Please type 'yes', 'no' or the fingerprint: y
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added '192.168.235.170' (ECDSA) to the list of known hosts.
+pavel@192.168.235.170's password:
+Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.8.0-55-generic x86_64)
+
+#Задание 1
+pavel@pavel-VBox:~$ cat > .my.cnf
+[client]
+user=root
+
+#Задание 2
+pavel@pavel-VBox:~$ mysql
+mysql> CREATE DATABASE IF NOT EXISTS example;
+Query OK, 1 row affected (0,04 sec)
+mysql> USE example;
+Database changed
+mysql> CREATE TABLE users (
+    -> id SERIAL,
+    -> name VARCHAR(200) NOT NULL UNIQUE
+    -> );
+Query OK, 0 rows affected (0,07 sec)
+
+mysql> exit
+
+#Задание 3
+pavel@pavel-VBox:~$ mysqldump example > example.sql
+pavel@pavel-VBox:~$ mysql sample < example.sql
+ERROR 1049 (42000): Unknown database 'sample'
+pavel@pavel-VBox:~$ mysql
+mysql> CREATE DATABASE sample;
+mysql> exit
+pavel@pavel-VBox:~$ mysql sample < example.sql
+
+#Задание 4
+pavel@pavel-VBox:~$ mysqldump mysql help_keyword --where='TRUE ORDER BY help_keyword_id LIMIT 100' > help_keyword_report.sql
+pavel@pavel-VBox:~$ ls -a
+ .               .config                                  .mozilla         .ssh                               Видео          'Рабочий стол'
+ ..              example.sql                              .my.cnf          .sudo_as_admin_successful          Документы       Шаблоны
+ .bash_history   .gnupg                                   .mysql_history   .vboxclient-clipboard.pid          Загрузки
+ .bash_logout    google-chrome-stable_current_amd64.deb   .pki             .vboxclient-display-svga-x11.pid   Изображения
+ .bashrc         help_keyword_report.sql                  .profile         .vboxclient-draganddrop.pid        Музыка
+ .cache          .local
