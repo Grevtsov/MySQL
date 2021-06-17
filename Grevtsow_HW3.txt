@@ -1,0 +1,53 @@
+-- Задание 1
+
+Добавить перед созданием таблиц CREATE TABLE IF NOT EXIST
+-- в таблице users 'id' сделать типом BIGINT
+-- Добавить справочник стран
+-- Добавить справочник городов
+-- Добавить таблицу медиа файлов
+-- Добавить таблицу связи пользователей и медиа файлов
+-- Добавить справочники школ,ВУЗов
+-- Добавить таблицу постов привязанную к id пользователей или сообществ
+
+По структуре не всё ясно. Очень много вариантов и не ясно в каком направлении лучше двигаться.
+
+-- Задание 2
+CREATE TABLE IF NOT EXIST likes_users (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	like BOOLEAN
+	from_user_id INT UNSIGNED NOT NULL,
+	to_user_id INT UNSIGNED NOT NULL,
+	created_at DATETIME DEFAULT NOW(),
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXIST likes_media (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	like BOOLEAN
+	from_user_id INT UNSIGNED NOT NULL,
+	to_media INT UNSIGNED NOT NULL,
+	created_at DATETIME DEFAULT NOW(),
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXIST likes_media (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	like BOOLEAN
+	from_user_id INT UNSIGNED NOT NULL,
+	to_media INT UNSIGNED NOT NULL,
+	created_at DATETIME DEFAULT NOW(),
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXIST likes_post (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	like BOOLEAN
+	from_user_id INT UNSIGNED NOT NULL,
+	to_post INT UNSIGNED NOT NULL,
+	created_at DATETIME DEFAULT NOW(),
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+
+-- Задание 3
+Сгенерировал тестовые данные и загружал через DBeaver, но как показать в ДЗ, что процедура загрузки выполнена я не понял.
+Сгенерированную базу данных прилогаю к ДЗ
